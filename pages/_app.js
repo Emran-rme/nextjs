@@ -1,7 +1,21 @@
-import '../styles/globals.css'
+import { Provider } from "react-redux";
+
+import MainLayout from "../src/components/layout/MainLayout";
+import "../styles/globals.css";
+import { store } from "../src/redux/store/index";
+import NextNProgress from "nextjs-progressbar";
+import { ToastContainer } from "react-toastify";
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+  return (
+    <Provider store={store}>
+      <MainLayout>
+        <NextNProgress />
+        <ToastContainer />
+        <Component {...pageProps} />
+      </MainLayout>
+    </Provider>
+  );
 }
 
-export default MyApp
+export default MyApp;
